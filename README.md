@@ -335,7 +335,7 @@ This project is licensed under the ISC License.
 
 ## 👤 Author
 
-**Vaibhavi Sharma** (@vaibhavi-2885)
+**Vaibhavi Mahajan** (@vaibhavi-2885)
 
 ---
 
