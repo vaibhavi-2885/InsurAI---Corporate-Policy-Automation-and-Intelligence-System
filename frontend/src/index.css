@@ -1,0 +1,123 @@
+/* GLOBAL STYLING OVERHAUL for Professional Financial Look */
+:root {
+  --primary-blue: #0056b3; /* Deep, Trustworthy Blue */
+  --secondary-blue: #00a8e8;
+  --accent-green: #28a745; /* Success Green */
+  --danger-red: #dc3545;
+  --bg-light: #f7f9fc; /* Off-White Background */
+  --text-dark: #2c3e50; /* Dark Charcoal Text */
+  --border-light: #e0e0e0;
+  --font-stack: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-stack);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-dark);
+  font-weight: 600; /* Slightly bolder headings */
+}
+
+/* --- 1. NAVBAR & LAYOUT --- */
+nav {
+  background: linear-gradient(90deg, var(--primary-blue), #00416a);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+nav a {
+  color: #fff !important;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+/* --- 2. FORMS & INPUTS --- */
+input, select, textarea {
+  border: 1px solid var(--border-light) !important;
+  border-radius: 6px !important;
+  padding: 10px 12px !important;
+  font-size: 15px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary-blue) !important;
+  box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2); /* Light focus glow */
+  outline: none;
+}
+
+/* --- 3. CARDS & DEPTH --- */
+.card {
+  background: white;
+  border-radius: 10px;
+  /* Multi-layer shadow for professional depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.1); 
+  border: 1px solid #f0f0f0; /* Subtle light border */
+  transition: all 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.15); 
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/* --- 4. BUTTONS (Uniform Look) --- */
+button {
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+/* Primary Blue Button (Default Login/Buy) */
+button[style*="#0056b3"] {
+  background-color: var(--primary-blue) !important;
+  color: white !important;
+}
+button[style*="#0056b3"]:hover {
+  background-color: #00418c !important;
+}
+
+/* Success Green Button (Register/Pay) */
+button[style*="#28a745"] {
+  background-color: var(--accent-green) !important;
+  color: white !important;
+}
+button[style*="#28a745"]:hover {
+  background-color: #1e7e34 !important;
+}
+
+/* Danger Red Button (Logout/Claim) */
+button[style*="#dc3545"] {
+  background-color: var(--danger-red) !important;
+  color: white !important;
+}
+button[style*="#dc3545"]:hover {
+  background-color: #b32a39 !important;
+}
+
+/* --- 5. DATA TABLE REFINEMENT --- */
+table {
+  border: 1px solid #e0e0e0;
+}
+th {
+  background-color: #f7f7f7 !important;
+  color: var(--text-dark) !important;
+  font-weight: 700 !important;
+}
+tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+td {
+  font-size: 14px;
+}
