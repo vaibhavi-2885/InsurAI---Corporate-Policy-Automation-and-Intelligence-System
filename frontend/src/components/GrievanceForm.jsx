@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { useNavigate } from 'react-router-dom';
 
 const GrievanceForm = () => {
@@ -37,7 +37,7 @@ const GrievanceForm = () => {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/grievances/submit', requestData);
+            await axios.post('/api/grievances/submit', requestData);
             
             setFeedback({ 
                 message: `✅ Thank you! Your submission has been logged successfully. We will review it shortly.`, 

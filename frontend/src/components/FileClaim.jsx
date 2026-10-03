@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { useNavigate } from 'react-router-dom';
 
 const FileClaim = () => {
@@ -38,7 +38,7 @@ const FileClaim = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/api/claims/file', claimData);
+            const response = await axios.post('/api/claims/file', claimData);
             
             if (response.data.status === "APPROVED") {
                 setFeedback({ 

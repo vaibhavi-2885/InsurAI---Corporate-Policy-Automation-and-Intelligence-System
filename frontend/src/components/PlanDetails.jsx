@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 
 const PlanDetails = () => {
     const location = useLocation();
@@ -46,7 +46,7 @@ const PlanDetails = () => {
             };
             
             // Call the new Java API endpoint
-            const response = await axios.post('http://localhost:8080/api/quote', requestBody);
+            const response = await axios.post('/api/quote', requestBody);
             
             // Update the display premium with the calculated value
             setFinalPremium(parseFloat(response.data).toLocaleString('en-IN', { maximumFractionDigits: 0 }));

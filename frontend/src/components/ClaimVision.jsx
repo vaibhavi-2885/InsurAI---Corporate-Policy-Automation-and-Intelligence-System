@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 
 const ClaimVision = () => {
     const [image, setImage] = useState(null);
@@ -14,7 +14,7 @@ const ClaimVision = () => {
 
         setLoading(true);
         try {
-            const res = await axios.post('http://localhost:8080/api/v1/claims/inspect', formData);
+            const res = await axios.post('/api/v1/claims/inspect', formData);
             setResult(res.data);
         } catch (err) {
             alert("Upload failed. Check backend.");

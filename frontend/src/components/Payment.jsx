@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 
 const Payment = () => {
     const location = useLocation();
@@ -74,11 +74,11 @@ const Payment = () => {
                 
                 if (isRenewal) {
                     // RENEWAL: PUT request to /api/policies/renew/{policyId}
-                    apiEndpoint = `http://localhost:8080/api/policies/renew/${policyId}`;
+                    apiEndpoint = `/api/policies/renew/${policyId}`;
                     response = await axios.put(apiEndpoint, {}); // Body is empty for renewal PUT
                 } else {
                     // NEW PURCHASE: POST request to /api/policies/buy
-                    apiEndpoint = 'http://localhost:8080/api/policies/buy';
+                    apiEndpoint = '/api/policies/buy';
                     response = await axios.post(apiEndpoint, newPolicyData); // Body contains full legal data
                 }
                 

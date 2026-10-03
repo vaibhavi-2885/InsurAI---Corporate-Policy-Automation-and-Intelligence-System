@@ -11,7 +11,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/underwriting")
-@CrossOrigin(origins = "http://localhost:5173") // Connects to your React/Vite development server
 public class UnderwritingController {
 
     @Autowired

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 
 // The onResult prop allows this component to "talk" to the Chatbot
 const PremiumEstimator = ({ onResult }) => {
@@ -20,7 +20,7 @@ const PremiumEstimator = ({ onResult }) => {
     setLoading(true);
     try {
       // Connecting to your Spring Boot UnderwritingController
-      const response = await axios.post('http://localhost:8080/api/v1/underwriting/evaluate', formData);
+      const response = await axios.post('/api/v1/underwriting/evaluate', formData);
       
       setResult(response.data);
 

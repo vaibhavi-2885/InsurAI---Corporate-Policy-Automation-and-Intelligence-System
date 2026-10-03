@@ -1,0 +1,8 @@
+.git
+.idea
+.vscode
+data
+target
+local.properties
+.env
+*.iml

@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/amendments")
-@CrossOrigin(origins = "http://localhost:5173")
 public class PolicyAmendmentController {
 
     @Autowired

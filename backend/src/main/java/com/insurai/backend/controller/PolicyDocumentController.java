@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/documents")
-@CrossOrigin(origins = "http://localhost:5173") // Connects to your React Vite server
 public class PolicyDocumentController {
 
     @Autowired

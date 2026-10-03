@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 // import { useToast } from './ToastProvider'; // Assuming ToastProvider exists
 
 // Fallback alert wrapper since we don't have ToastProvider in this context
@@ -28,7 +28,7 @@ const MyProfile = () => {
         setIsLoading(true);
         try {
             // API Call: GET /api/users/{id}
-            const response = await axios.get(`http://localhost:8080/api/users/${userId}`);
+            const response = await axios.get(`/api/users/${userId}`);
             const userData = response.data;
             setUser(userData);
             setFormData({ fullName: userData.fullName, phoneNumber: userData.phoneNumber });
@@ -48,7 +48,7 @@ const MyProfile = () => {
         e.preventDefault();
         try {
             // API Call: PUT /api/users/{id}
-            await axios.put(`http://localhost:8080/api/users/${userId}`, formData);
+            await axios.put(`/api/users/${userId}`, formData);
             
             // Update UI state and clear editing state
             setUser({ ...user, ...formData });

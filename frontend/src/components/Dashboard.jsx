@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -18,7 +18,7 @@ const Dashboard = () => {
 
     const fetchPolicies = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/policies/user/${userId}`);
+            const response = await axios.get(`/api/policies/user/${userId}`);
             const data = response.data || [];
             
             // Sort by policy ID descending for new policies to appear first
@@ -45,7 +45,7 @@ const Dashboard = () => {
 
     const downloadPdf = async (policyId) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/policies/${policyId}/download`, {
+            const response = await axios.get(`/api/policies/${policyId}/download`, {
                 responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));

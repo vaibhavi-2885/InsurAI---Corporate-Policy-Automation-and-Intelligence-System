@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const PolicyAmendment = () => {
@@ -47,7 +47,7 @@ const PolicyAmendment = () => {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/amendments/submit', requestData);
+            await axios.post('/api/amendments/submit', requestData);
             
             setFeedback({ 
                 message: `✅ Amendment Request Submitted! It is now PENDING Admin review.`, 

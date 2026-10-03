@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { useNavigate } from 'react-router-dom';
 
 const Plans = () => {
@@ -8,7 +8,7 @@ const Plans = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/plans')
+        axios.get('/api/plans')
             .then(response => { setPlans(response.data); })
             .catch(error => { console.error("Error fetching plans:", error); });
     }, []);

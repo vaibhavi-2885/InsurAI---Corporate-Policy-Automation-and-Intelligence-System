@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +64,7 @@ const Chatbot = () => {
         setInput('');
 
         try {
-            const response = await axios.post('http://localhost:8080/api/chat/ask', { message: text });
+            const response = await axios.post('/api/chat/ask', { message: text });
             const botReply = response.data.response;
             setMessages(prev => [...prev, { sender: 'bot', text: botReply }]);
             

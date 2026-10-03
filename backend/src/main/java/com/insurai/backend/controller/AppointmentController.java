@@ -11,7 +11,6 @@ import java.util.Optional; // 👈 Added missing import for Optional
 
 @RestController
 @RequestMapping("/api/appointments")
-@CrossOrigin(origins = "http://localhost:5173")
 public class AppointmentController {
 
     @Autowired

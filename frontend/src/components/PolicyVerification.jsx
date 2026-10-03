@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 
 const PolicyVerification = () => {
     const [policies, setPolicies] = useState([]);
@@ -9,7 +9,7 @@ const PolicyVerification = () => {
         const fetchPolicies = async () => {
             try {
                 // Fetching the real persistent data from your new repository
-                const response = await axios.get('http://localhost:8080/api/v1/documents/my-policies');
+                const response = await axios.get('/api/v1/documents/my-policies');
                 setPolicies(response.data);
             } catch (error) {
                 console.error("Error fetching policies:", error);

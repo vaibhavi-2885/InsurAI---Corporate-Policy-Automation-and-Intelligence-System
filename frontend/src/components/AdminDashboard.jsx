@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 
 // Component for the Edit/Create Modal Form (Product Management)
 const PlanFormModal = ({ isOpen, onClose, planData, onSave }) => {
@@ -134,11 +134,11 @@ const AdminDashboard = () => {
         try {
             // Fetch all necessary data
             const [u, p, c, pl, g] = await Promise.all([
-                axios.get('http://localhost:8080/api/users/all'),
-                axios.get('http://localhost:8080/api/policies/all'),
-                axios.get('http://localhost:8080/api/claims/all'),
-                axios.get('http://localhost:8080/api/plans'),
-                axios.get('http://localhost:8080/api/grievances/all'), // Fetch ALL Grievances
+                axios.get('/api/users/all'),
+                axios.get('/api/policies/all'),
+                axios.get('/api/claims/all'),
+                axios.get('/api/plans'),
+                axios.get('/api/grievances/all'), // Fetch ALL Grievances
             ]);
 
             const rev = p.data.reduce((sum, x) => sum + x.premiumPaid, 0);
@@ -175,11 +175,11 @@ const AdminDashboard = () => {
         try {
             if (planData.planId) {
                 // UPDATE (PUT request)
-                await axios.put(`http://localhost:8080/api/plans/${planData.planId}`, planData);
+                await axios.put(`/api/plans/${planData.planId}`, planData);
                 alert(`Plan #${planData.planId} updated successfully.`);
             } else {
                 // CREATE (POST request)
-                await axios.post('http://localhost:8080/api/plans', planData);
+                await axios.post('/api/plans', planData);
                 alert(`New plan '${planData.planName}' created successfully.`);
             }
             fetchData(); // Refresh data after action
@@ -191,7 +191,7 @@ const AdminDashboard = () => {
     const handleDeletePlan = async (id) => {
         if (window.confirm(`Are you sure you want to delete Plan #${id}? This cannot be undone.`)) {
             try {
-                await axios.delete(`http://localhost:8080/api/plans/${id}`);
+                await axios.delete(`/api/plans/${id}`);
                 alert(`Plan #${id} deleted.`);
                 fetchData();
             } catch (error) {
@@ -205,7 +205,7 @@ const AdminDashboard = () => {
         if (!window.confirm(`Confirm action: Mark Grievance #${grievanceId} as ${status}?`)) return;
         
         try {
-            await axios.put(`http://localhost:8080/api/grievances/${grievanceId}/status`, status, {
+            await axios.put(`/api/grievances/${grievanceId}/status`, status, {
                 headers: { 'Content-Type': 'text/plain' }
             });
             alert(`Grievance #${grievanceId} marked as ${status}.`);

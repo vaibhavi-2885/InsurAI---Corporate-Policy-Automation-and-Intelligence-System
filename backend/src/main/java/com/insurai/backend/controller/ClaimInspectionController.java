@@ -9,7 +9,6 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1/claims")
-@CrossOrigin(origins = "http://localhost:5173")
 public class ClaimInspectionController {
 
     @Autowired

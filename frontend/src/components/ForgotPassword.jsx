@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
@@ -9,7 +9,7 @@ const ForgotPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:8080/api/users/forgot-password', { email });
+            const res = await axios.post('/api/users/forgot-password', { email });
             setMessage('✅ ' + res.data);
         } catch (error) {
             setMessage('❌ Error: Email not found.');

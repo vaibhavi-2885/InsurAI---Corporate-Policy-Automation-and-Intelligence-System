@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { useNavigate } from 'react-router-dom';
 
 const AGENTS = [ // Simulated Agent Data for the Frontend
@@ -23,7 +23,7 @@ const BookAppointment = () => {
     }, []);
 
     const fetchAppointments = () => {
-        axios.get(`http://localhost:8080/api/appointments/user/${userId}`)
+        axios.get(`/api/appointments/user/${userId}`)
             .then(response => {
                 const sortedAppts = response.data.sort((a, b) => new Date(a.appointmentDate) - new Date(b.appointmentDate));
                 setAppointments(sortedAppts);
@@ -65,7 +65,7 @@ const BookAppointment = () => {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/appointments/book', appointmentData);
+            await axios.post('/api/appointments/book', appointmentData);
             alert("Appointment Booked Successfully! Check your email for meeting link.");
             fetchAppointments(); 
             setDate('');

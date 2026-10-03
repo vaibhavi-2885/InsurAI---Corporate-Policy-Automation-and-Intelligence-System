@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { useNavigate } from 'react-router-dom';
 
 // Simulated Agent Data (Ideally fetched from /api/users/agent/{id} in a real system)
@@ -35,7 +35,7 @@ const AgentDashboard = () => {
 
     // --- DATA FETCHING ---
     const fetchAppointments = () => {
-        axios.get(`http://localhost:8080/api/appointments/agent/${agentId}`)
+        axios.get(`/api/appointments/agent/${agentId}`)
             .then(response => {
                 const sortedAppts = response.data.sort((a, b) => new Date(a.appointmentDate) - new Date(b.appointmentDate));
                 setAppointments(sortedAppts);
@@ -44,7 +44,7 @@ const AgentDashboard = () => {
     };
 
     const fetchAvailability = () => {
-        axios.get(`http://localhost:8080/api/availability/agent/${agentId}`)
+        axios.get(`/api/availability/agent/${agentId}`)
             .then(response => {
                 setAvailability(response.data);
             })
@@ -66,7 +66,7 @@ const AgentDashboard = () => {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/availability', slotData);
+            await axios.post('/api/availability', slotData);
             alert(`Schedule updated for ${newSlot.dayOfWeek}.`);
             fetchAvailability();
         } catch (error) {
@@ -79,7 +79,7 @@ const AgentDashboard = () => {
     const handleDeleteSlot = async (id) => {
         if (!window.confirm("Are you sure you want to delete this availability slot?")) return;
         try {
-            await axios.delete(`http://localhost:8080/api/availability/${id}`);
+            await axios.delete(`/api/availability/${id}`);
             alert('Slot deleted.');
             fetchAvailability();
         } catch (error) {

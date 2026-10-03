@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
+import axios from '../lib/httpClient';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -16,7 +16,7 @@ const Login = () => {
         }),
         onSubmit: async (values) => {
             try {
-                const response = await axios.post('http://localhost:8080/api/users/login', values);
+                const response = await axios.post('/api/users/login', values);
                 alert(`Welcome back, ${response.data.fullName}!`);
                 
                 // 1. Save user info to LocalStorage
